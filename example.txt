@@ -1,0 +1,41 @@
+// 假设有一个类数据结构如下：
+struct {data_structure} {
+    // 类成员变量和类型
+};
+
+class MyClass {
+private:
+    // 类的私有成员变量，基于给定的数据结构
+    {data_structure} data;
+
+public:
+    // 类的公共方法，根据输入和输出生成相应的函数体
+
+    void {function_name}({input}) {
+        // 函数体，实现具体的逻辑来处理输入并产生输出
+        // {description} 可以是函数的描述性文本
+        // 例如，如果input是int类型，output也是int类型，可以是：
+        // return input * 2; // 一个简单的示例，将输入翻倍作为输出
+
+        // 如果需要根据类的数据结构进行操作，可以访问data成员
+    }
+};
+将 {data_structure}、{input}、{output} 和 {function_name} 替换为具体的数据结构定义、函数输入参数、函数输出和函数名。{result} 是填充完整后的代码结果。
+例如，如果有一个简单的需求，要求有一个函数计算一个整数的平方，并且类数据结构是一个简单的整数，那么生成的代码可能如下：
+struct SimpleDataStructure {
+    int value;
+};
+
+class Calculator {
+private:
+    SimpleDataStructure data;
+
+public:
+    Calculator(int initialValue) : data({value: initialValue}) {}
+
+    int square() {
+        // 计算data.value的平方
+        return data.value * data.value;
+    }
+};
+在这个例子中，SimpleDataStructure 包含了一个 int 类型的成员变量，Calculator 类有一个 square 函数，它根据类的数据结构计算并返回一个整数的平方。
