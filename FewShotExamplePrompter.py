@@ -11,7 +11,7 @@ class FewShotExamplePrompter:
         
         # 创建用于格式化例子的prompt模板
         self.example_prompt = PromptTemplate(
-            input_variables=["input", "output","data_structure","result"],
+            input_variables=["descriptions", "input", "output","data_structure","result"],
             template=example_formatter_template
         )
         
@@ -21,7 +21,7 @@ class FewShotExamplePrompter:
             example_prompt=self.example_prompt,
             prefix=self.prefix,
             suffix=self.suffix,
-            input_variables=["input", "output","data_structure"],
+            input_variables=["descriptions", "input", "output","data_structure"],
             example_separator=self.example_separator
         )
     
