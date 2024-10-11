@@ -1,7 +1,7 @@
 from langchain_community.llms import Ollama
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-import FewShotExamplePrompter
+from FewShotExamplePrompter import FewShotExamplePrompter
 llm = Ollama(model="llama3")
 output_parser = StrOutputParser()
 
@@ -28,12 +28,12 @@ prompter = FewShotExamplePrompter(
 )
 
 # 生成包含few-shot examples的prompt
-prompt = prompter.generate_prompt(input_value="飞机")
+prompt = prompter.generate_prompt(input_value="10")
 # prompt = ChatPromptTemplate.from_messages([
 #     ("system", "写一段代码以完成这个函数,不要有其他文字，并使用中文回答问题"),
 #     ("user", "{input}")
 # ])
 print(prompt)
-chain = prompt | llm 
-out=chain.invoke({"input":"实现了飞行的起飞控制"})
-print(out)
+# chain = prompt | llm | StrOutputParser()
+# out=chain.invoke({"input":"实现了飞行的起飞控制"})
+# print(out)

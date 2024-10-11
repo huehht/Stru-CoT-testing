@@ -25,6 +25,6 @@ class FewShotExamplePrompter:
             example_separator=self.example_separator
         )
     
-    def generate_prompt(self, input_value):
+    def generate_prompt(self, input_value="", output_value="", ds=""):
         # 使用few-shot例子和指定的输入值生成格式化后的prompt
-        return self.few_shot_prompt.format(input=input_value)
+        return self.few_shot_prompt.format(input=input_value, output=output_value, data_structure=ds)
