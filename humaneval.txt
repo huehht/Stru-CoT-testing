@@ -1,15 +1,22 @@
 HumanEval/0
 -----------------------
+
+
 from typing import List
 
 
-def has_close_elements(numbers: List[float], threshold: float) -> bool:
-    """ Check if in given list of numbers, are any two numbers closer to each other than
-    given threshold.
-    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
-    False
-    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
-    True
+def has_close_elements(array_A: Array_A, threshold_b: Threshold_B) -> bool:
+    """There are two classes named Array_A, Threshold_B. Write a function that implements the interaction between their interface.
+    class Array_A:
+        have a public interface named get_array which returns List[float].
+    class Threshold_B:
+        have a public interface named get_threshold which returns float.
+    Check if in given list of numbers from Array_A, are any two numbers closer to each other than
+    given number from Threshold_B.
+    If Array_A.get_array returns [1.0, 2.0, 3.0] and Threshold_B.get_threshold returns 0.5,
+    The function will return False.
+    And if Array_A.get_array returns [1.0, 2.8, 3.0, 4.0, 5.0, 2.0] and Threshold_B.get_threshold returns 0.3,
+    The function will return True.
     """
 
 -----------------------
@@ -22,15 +29,36 @@ METADATA = {
     'dataset': 'test'
 }
 
+class Array_A:
+    def __init__(self,array_input):
+        self.array=array_input
+
+    def __get_array_transfer(self):
+        return self.array
+
+    def get_array(self):
+        return self.__get_array_transfer()
+
+
+class Threshold_B:
+    def __init__(self,threshold_input):
+        self.threshold=threshold_input
+
+    def __get_threshold_transfer(self):
+        return self.threshold
+
+    def get_threshold(self):
+        return self.__get_threshold_transfer()
+
 
 def check(candidate):
-    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) == True
-    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) == False
-    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) == True
-    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) == False
-    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) == True
-    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) == True
-    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) == False
+    assert candidate(Array_A([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]), Threshold_B(0.3)) == True
+    assert candidate(Array_A([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]), Threshold_B(0.05)) == False
+    assert candidate(Array_A([1.0, 2.0, 5.9, 4.0, 5.0]), Threshold_B(0.95)) == True
+    assert candidate(Array_A([1.0, 2.0, 5.9, 4.0, 5.0]), Threshold_B(0.8)) == False
+    assert candidate(Array_A([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]), Threshold_B(0.1)) == True
+    assert candidate(Array_A([1.1, 2.2, 3.1, 4.1, 5.1]), Threshold_B(1.0)) == True
+    assert candidate(Array_A([1.1, 2.2, 3.1, 4.1, 5.1]), Threshold_B(0.5)) == False
 
 
 -----------------------
@@ -39,14 +67,20 @@ HumanEval/1
 from typing import List
 
 
-def separate_paren_groups(paren_string: str) -> List[str]:
-    """ Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
-    separate those group into separate strings and return the list of those.
-    Separate groups are balanced (each open brace is properly closed) and not nested within each other
-    Ignore any spaces in the input string.
-    >>> separate_paren_groups('( ) (( )) (( )( ))')
-    ['()', '(())', '(()())']
+def separate_paren_groups(group_A: SeparateParenGroups, group_B: SeparateParenGroups) -> List[str]:
     """
+    Separate the groups of nested parentheses in the given string from two SeparateParenGroups classes.
+    First, you should merge two strings with the order group_A, group_B
+    class SeparateParenGroups:
+        have a public interface named get_string which returns str.
+    Then you need to separate those groups into separate strings and return the list of those.
+    Separate groups are balanced (each open brace is properly closed) and not nested within each other.
+    Ignore any spaces in the input string.
+    If 
+     group_A.get_string returns '( ) (( ))' and group_B.get_string returns '(( )( ))',
+    The function will return ['()', '(())', '(()())'].
+    """
+
 
 -----------------------
 separate_paren_groups
@@ -58,6 +92,16 @@ METADATA = {
     'dataset': 'test'
 }
 
+
+class SeparateParenGroups:
+    def __init__(self, string_input):
+        self.string = string_input
+
+    def __get_string_transfer(self):
+        return self.string
+
+    def get_string(self):
+        return self.__get_string_transfer()
 
 def check(candidate):
     assert candidate('(()()) ((())) () ((())()())') == [
